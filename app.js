@@ -1,30 +1,37 @@
-let inputDeger = document.getElementById("inputdeger");
+let number = document.getElementById("inputdeger");
 let button = document.getElementById("button");
 let yon = document.getElementById("yönlendirme");
 let tebrik = document.getElementById("tebrikler");
+let tahminSayısı = document.getElementById("tahminSayısı");
 
 
 let tahminEdilenSayı = 20;
-let tahminSayısı = 0;
+tahminEdilenSayı = parseInt(tahminEdilenSayı);
+let tahmin = 0;
+
 
 button.addEventListener("click", tıkla);
 
 function tıkla() { 
-    let number = prompt("LÜtfen tahmib sayısını giriniz...");
-    while(true){    
-        if ( number < tahminEdilenSayı ) {
-            yon.innerHTML = "sayıyı arttırnız."
-        }
-        else if ( number > tahminEdilenSayı){
-            yon.innerHTML = "sayıyı azaltınız..."
-        }
-        else if( number = tahminEdilenSayı){
-            tebrik.innerHTML = "CONGURATİON"
-            break
-        }
-        else{
-            yon.innerHTML = "geçerli bir sayı"
-        }
+    let num = number.value
+    if (num > 100 || num < 0){    
+        yon.innerHTML = "Enter a numeric value between 0 and 100"
     }
-        
-}   
+    else{
+        tahmin++;
+        tahminSayısı.innerHTML = `Number of attempts ${tahmin}`;
+        if ( num < tahminEdilenSayı ) {
+            yon.innerHTML = "increase the number!!"
+        }
+        else if ( num > tahminEdilenSayı){
+            yon.innerHTML = "decrease the number!!"
+        }
+        else if( num == tahminEdilenSayı){
+            tebrik.innerHTML = "*** CONGRATULATİONS :))) ***"
+            yon.innerHTML = "";
+            tahminSayısı.innerHTML = "";
+            
+        }
+    } 
+      
+} 
